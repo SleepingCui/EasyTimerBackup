@@ -1,0 +1,13 @@
+{
+    "time": {
+        "hour": 14,
+        "minute": 45,
+        "second": 50
+    },
+    "backup": {
+        "source_dir": "D:\\Code\\MinecraftServerAllBackup\\test\\yaobeifen",
+        "target_dir": "D:\\Code\\MinecraftServerAllBackup\\test\\back",
+        "temp_dir": "D:\\Code\\MinecraftServerAllBackup\\test\\temp"
+
+    }
+}
