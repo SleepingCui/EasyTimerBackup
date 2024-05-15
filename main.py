@@ -1,6 +1,3 @@
-from json_read import *
-import time
-import logging
 from packzip import *
 
 #初始化logging
@@ -10,9 +7,18 @@ logging.basicConfig(
 
 )
 logging.info("============= Server Backup =============")
-logging.info("读取配置文件...")
+logging.info("            version 0.0.5-beta"
+)
+
+if debugging():
+    logging.info("Debugging is ON")
+else:pass
+global config
+config = json_read()
 try:
-    config = json_read()
+    logging.info("读取config...")
+    if debugging():
+        logging.debug(f"readed config: {config}")
     logging.info("读取完成!")
     logging.info(f'备份时间:{config["time"]["hour"]}:{config["time"]["minute"]}:{config["time"]["second"]}')
     logging.info(f"源目录:{config['backup']['source_dir']}")
@@ -27,5 +33,6 @@ while True:
             current_time.tm_min == config["time"]["minute"] and
             current_time.tm_sec == config["time"]["second"]):
         logging.info("\033[92m备份时间到!触发备份...\033[0m")
+
         backup_zip()
         time.sleep(1)  # 防止在同一秒内多次输出
